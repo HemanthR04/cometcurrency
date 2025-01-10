@@ -1,8 +1,8 @@
 
 "use client"
-
+import { Button } from "@/components/ui/button"
 import { signIn } from "next-auth/react"
  
 export default function SignIn() {
-  return <button onClick={() => signIn("google", { redirectTo: "/home" })}>Signin with Google</button>
+  return <Button onClick={() => signIn("google", { redirectTo: "/insta-verification" })}>Signin with Google</Button>
 }
