@@ -5,7 +5,7 @@ export default function Navbar() {
     return (
         <nav className="navbar flex justify-between items-center  py-2"> 
             <div className="logo">
-                <h1 className="text-2xl font-bold">COMET<br></br> CURRENCY</h1>
+               <Link href={"/home"}> <h1 className="text-xl font-bold">COMET<br></br> CURRENCY</h1></Link>
             </div>
             {/* <div className="nav-links">
                 <ul className="flex gap-4">

@@ -63,7 +63,7 @@ export default function VaulDrawer() {
               
                 <button
                   type="submit"
-                  onClick={() => {router.push('/insta-verification')}}
+                  onClick={() => {router.push('/home')}}
                   className="text-white bg-black hover:bg-primary-700 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-full text-sm px-8 py-2.5 text-center inline-flex items-center"
                 >
                   Login
