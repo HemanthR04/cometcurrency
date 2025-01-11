@@ -1,28 +1,31 @@
+import OfferCard from "@/components/offer-card";
 
-export default async function Blogs(){
+const categories = ["All", "Healthcare", "Lifestyle", "Resturants"];
 
-    return (
-        
-       <div className="px-4">
-         
-          <div className="bg-gray-100 text-black rounded-2xl w-full h-56 p-4 shadow-lg">
-            <div className="flex items-center justify-between">
-              <div>
-                <p className="text-lg font-bold">Hemanth Ramesh</p>
-                <p className="text-sm">Creator</p>
-              </div>
-              <img src="/chip.png" className="w-8" alt="" />
-            </div>
-            <div className="mt-4">
-              <p className="text-2xl font-bold">Available Credit : 5000</p>
-              <div className="flex items-center justify-between">
-                <p className="text-sm">12/2025</p>
-                
-              </div>
-              <p>Weekly Credit : 1000</p>
-            </div>
-          </div>
-         
-       </div>
-    )
+export default async function Blogs() {
+  return (
+    <>
+      <div className="home w-full text-center flex items-center justify-center gap-3 flex-col h-60  ">
+        <p>Hi Hemanth , Here is your Social Credit ! </p>
+        {<span className="text-4xl font-bold ">₹3,304</span>}
+      </div>
+      <div className=" p-2">
+        <ul className="flex flex-wrap gap-2 items-center justify-center">
+          {categories.map((category) => (
+            <li
+              key={category}
+              className="bg-gray-200 rounded-full px-2 py-1 text-black"
+            >
+              {category}
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div className="offers flex flex-col gap-2 my-4">
+        <OfferCard/>
+        <OfferCard/>
+        <OfferCard/>
+      </div>
+    </>
+  );
 }
