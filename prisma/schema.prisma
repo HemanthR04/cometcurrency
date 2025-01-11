@@ -14,7 +14,7 @@ datasource db {
 }
 
 model User {
-  id       String   @id @default(cuid())
+  id       Int  @id @default(autoincrement())
   name     String?
   email    String?  @unique
   city     String?
@@ -24,4 +24,29 @@ model User {
   igUsername String?
   followersCount Int? @default(0)
   contentCategory String?
-}
+  verified Boolean
+  tier    String?
+  score  Int? 
+  }
+
+  model SCL {
+    id       Int  @id @default(autoincrement())
+    cometScore     Int
+    creditLimit    Int?  
+    creditUsed     Int?
+    creditLeft   Int?
+   
+  }
+
+  model Offers {
+    id       Int  @id @default(autoincrement())
+    offerName     String
+    offerDescription    String?
+    offerImage     String?
+    offerLink   String?
+    offerCategory   String?
+    offerType   String?
+    offerValue   Int?
+    offerExpiry   DateTime?
+    
+  }
