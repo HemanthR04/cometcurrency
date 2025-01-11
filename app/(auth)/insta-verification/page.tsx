@@ -1,5 +1,5 @@
 "use client";
-
+import toast, { Toaster } from "react-hot-toast";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import router, { useRouter } from "next/navigation";
@@ -34,12 +34,20 @@ export default function InstaVerificationPage() {
   const [instagramBio, setInstagramBio] = useState("");
   const [isFetching, setIsFetching] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(false);
   let verified = false;
   const router = useRouter();
   const checkBioForVerification = (bio: string) => {
-    if (bio.toLowerCase().includes("founder")) {
+    setLoading(true);
+    if (bio.toLowerCase().includes("#CometCreater")) {
       verified = true;
        router.push("/comet-score");
+    }
+    else{
+      setError("Please add the hashtag #CometCreator to your bio and try again.");
+      
+      setLoading(false);
+      toast.error("Please add the hashtag #CometCreator to your bio and try again.");
     }
   };
   const handleFetchData = async (usernameToFetch: string) => {
@@ -63,8 +71,14 @@ export default function InstaVerificationPage() {
       setIsFetching(false);
     }
   };
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
+    <>
+    <div><Toaster/></div>
+   
     <div className="p-4 w-full max-w-xl mx-auto mt-36  ">
       <h1 className="text-sm font-semibold mb-4">Verify your Instagram</h1>
       <p className="text-xs mb-4">Add the Hashtag <span className="font-bold">#CometCreator</span> to your Bio and click on verify </p>
@@ -85,9 +99,9 @@ export default function InstaVerificationPage() {
         {isFetching ? "Verifying..." : "Verify"}
       </RainbowButton>
 
-      {/* Feedback Section */}
-      {error && <p className="text-red-500 mt-4">{error}</p>}
+     
       
     </div>
+    </>
   );
 }
